@@ -124,3 +124,53 @@ html {
   border-bottom: 1px solid var(--border-color);
   height: 36px;
 }
+
+/* Print Stylesheet - Isolates the Resume Sheet for Clean Printing */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Hide entire interface during print */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Reveal only the resume sheet and its children */
+  #printable-resume,
+  #printable-resume * {
+    visibility: visible !important;
+  }
+
+  #printable-resume {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    display: block !important;
+  }
+
+  /* Ensure actions bar is hidden in print */
+  .no-print,
+  .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
