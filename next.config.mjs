@@ -31,6 +31,7 @@ const nextConfig = {
   },
   experimental: {
     turbopackPluginRuntimeStrategy: "forceWorkerThreads",
+    agentUpgrade: "security",
   },
 };
 
