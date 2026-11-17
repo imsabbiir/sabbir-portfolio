@@ -62,10 +62,10 @@ export default function Header({
       { label: "About SabbirOS", action: () => onOpenApp?.("about") },
       { label: "Settings & Control Panel", action: () => onOpenApp?.("settings") },
       {
-        label: isDarkMode ? "Switch to Light Mode ☀️ (লাইট মোড)" : "Switch to Dark Mode 🌙 (ডার্ক মোড)",
+        label: isDarkMode ? "Switch to Light Mode ☀️" : "Switch to Dark Mode 🌙",
         action: () => onToggleDarkMode?.(),
       },
-      { label: "Lock Screen 🔒 (লক করুন)", action: () => onLockScreen?.() },
+      { label: "Lock Screen 🔒", action: () => onLockScreen?.() },
       { label: "Reset All Positions", action: () => onResetPositions?.() },
       { label: "Change Wallpaper", action: () => onToggleWallpaper?.() },
       { label: "Restart Workspace", action: () => window.location.reload() },
@@ -155,7 +155,7 @@ export default function Header({
             type="button"
             onClick={onToggleDarkMode}
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/10 dark:bg-white/10 hover:bg-indigo-500/20 hover:text-indigo-600 dark:hover:text-indigo-300 text-slate-700 dark:text-slate-200 border border-black/10 dark:border-white/15 transition-all shadow-xs cursor-pointer active:scale-95 group"
-            title={isDarkMode ? "Switch to Light Mode ☀️ (লাইট মোড)" : "Switch to Dark Mode 🌙 (ডার্ক মোড)"}
+            title={isDarkMode ? "Switch to Light Mode ☀️" : "Switch to Dark Mode 🌙"}
           >
             {isDarkMode ? (
               <>
@@ -175,7 +175,7 @@ export default function Header({
             type="button"
             onClick={onLockScreen}
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/10 dark:bg-white/10 hover:bg-amber-500/20 hover:text-amber-600 dark:hover:text-amber-300 hover:border-amber-400/40 text-slate-700 dark:text-slate-200 border border-black/10 dark:border-white/15 transition-all shadow-xs cursor-pointer group"
-            title="Lock Workspace (লক স্ক্রিনে যান)"
+            title="Lock Workspace"
           >
             <Lock size={12} className="text-amber-500 group-hover:scale-110 transition-transform" />
             <span className="font-semibold text-[11px] hidden sm:inline">Lock</span>

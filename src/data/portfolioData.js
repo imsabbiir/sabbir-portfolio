@@ -178,7 +178,7 @@ export const portfolioData = {
       {
         id: "traveling",
         title: "Traveling",
-        bengali: "ভ্রমণ ও ঘুরে বেড়ানো",
+        subtitle: "Exploration & Adventures",
         icon: "Compass",
         color: "text-blue-500",
         bg: "bg-blue-500/10",
@@ -188,7 +188,7 @@ export const portfolioData = {
       {
         id: "gaming",
         title: "Computer Gaming",
-        bengali: "কম্পিউটার গেমিং",
+        subtitle: "Tactical & RPG Games",
         icon: "Gamepad2",
         color: "text-purple-500",
         bg: "bg-purple-500/10",
@@ -198,7 +198,7 @@ export const portfolioData = {
       {
         id: "music",
         title: "Listening to Songs",
-        bengali: "গান শোনা",
+        subtitle: "Acoustic & Lo-Fi",
         icon: "Headphones",
         color: "text-emerald-500",
         bg: "bg-emerald-500/10",
@@ -696,21 +696,21 @@ export const portfolioData = {
     {
       id: "traveling",
       title: "Traveling",
-      bengali: "ভ্রমণ ও রোমাঞ্চ",
+      subtitle: "Exploration & Adventures",
       icon: "Compass",
       desc: "Exploring scenic riverbanks, Bandarban mountain trails, and Sylhet tea gardens to refresh mind and creativity."
     },
     {
       id: "gaming",
       title: "Computer Gaming",
-      bengali: "কম্পিউটার গেমিং",
+      subtitle: "Tactical & RPG Games",
       icon: "Gamepad2",
       desc: "Competitive tactical FPS, open-world RPGs, custom mechanical keyboards, and interactive web game development."
     },
     {
       id: "music",
       title: "Listening to Songs",
-      bengali: "গান শোনা",
+      subtitle: "Acoustic & Lo-Fi",
       icon: "Headphones",
       desc: "Melodic Bengali rock, acoustic rhythms, lo-fi beats, and instrumental focus playlists while coding."
     }

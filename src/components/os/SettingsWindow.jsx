@@ -221,7 +221,7 @@ export default function SettingsWindow({
             type="button"
             onClick={onLockScreen}
             className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-700 dark:text-amber-300 border border-amber-500/30 transition font-medium text-xs shadow-sm cursor-pointer"
-            title="Lock your workspace (লক স্ক্রিনে যান)"
+            title="Lock your workspace"
           >
             <Lock size={13} />
             <span>Lock Workspace</span>
@@ -243,7 +243,7 @@ export default function SettingsWindow({
             type="button"
             onClick={onLockScreen}
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-left transition font-medium bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 text-xs cursor-pointer"
-            title="Lock your workspace (লক স্ক্রিনে যান)"
+            title="Lock your workspace"
           >
             <Lock size={13} />
             <span>Lock</span>
@@ -644,13 +644,13 @@ export default function SettingsWindow({
                 </div>
                 <div>
                   <div className="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-2">
-                    <span>{isDarkMode ? "ডার্ক মোড (Dark Mode Active)" : "লাইট মোড (Light Mode Active)"}</span>
+                    <span>{isDarkMode ? "Dark Mode Active" : "Light Mode Active"}</span>
                     <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-indigo-500/15 text-indigo-400 border border-indigo-400/25">
                       {isDarkMode ? "Obsidian" : "Daylight"}
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                    সিস্টেমের উপর নির্ভর না করে সরাসরি ম্যানুয়ালি ডার্ক অথবা লাইট মোড চালু করুন
+                    Switch between Dark and Light mode manually without relying on system preferences
                   </p>
                 </div>
               </div>
@@ -661,7 +661,7 @@ export default function SettingsWindow({
                 className="w-full sm:w-auto px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-xs transition shadow-sm cursor-pointer shrink-0 flex items-center justify-center gap-2"
               >
                 {isDarkMode ? <Sun size={14} className="text-amber-300" /> : <Moon size={14} className="text-indigo-200" />}
-                <span>{isDarkMode ? "Switch to Light Mode (লাইট মোড)" : "Switch to Dark Mode (ডার্ক মোড)"}</span>
+                <span>{isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}</span>
               </button>
             </div>
 

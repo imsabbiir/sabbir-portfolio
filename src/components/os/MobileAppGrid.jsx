@@ -4,7 +4,7 @@ import React from "react";
 
 export default function MobileAppGrid({ apps = [], onOpenApp }) {
   // Chunk apps into rows of 4 starting from the bottom row up to the top.
-  // The bottom-most row (closest to dock) gets the first 4 items ("নিচের সিরিয়ালে চারটা").
+  // The bottom-most row (closest to dock) gets the first 4 items.
   // The next row above gets the next 4 items (or whatever remainder 1, 2, or 3 items).
   const rowsFromBottom = [];
   for (let i = 0; i < apps.length; i += 4) {

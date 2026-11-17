@@ -19,7 +19,7 @@ export default function MobileSidePanel({
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          title="Open Control Tools (সাইড কন্ট্রোল প্যানেল)"
+          title="Open Control Tools"
           className="fixed right-0 top-[30%] -translate-y-1/2 z-[70] md:hidden w-8 h-12 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-l-2xl shadow-xl border-y border-l border-white/60 dark:border-white/20 flex items-center justify-center transition-transform cursor-pointer active:scale-95 group"
         >
           <div className="flex items-center gap-0.5 text-slate-700 dark:text-slate-200 group-hover:scale-110 transition-transform">
@@ -63,7 +63,7 @@ export default function MobileSidePanel({
                 type="button"
                 onClick={() => setIsOpen(false)}
                 className="w-5 h-9 rounded-l-xl bg-white/20 hover:bg-white/30 dark:bg-black/40 text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
-                title="Close Sidebar (বন্ধ করুন)"
+                title="Close Sidebar"
               >
                 <ChevronRight size={14} />
               </button>
@@ -77,7 +77,7 @@ export default function MobileSidePanel({
                     onToggleWallpaper?.();
                   }}
                   className="w-11 h-11 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border border-blue-400/30 flex items-center justify-center shadow-md active:scale-90 transition-transform cursor-pointer"
-                  title="Change Wallpaper (ওয়ালপেপার পরিবর্তন)"
+                  title="Change Wallpaper"
                 >
                   <Images size={19} />
                 </button>
@@ -93,7 +93,7 @@ export default function MobileSidePanel({
                       ? "bg-amber-500/20 text-amber-300 border-amber-400/30 hover:bg-amber-500/30"
                       : "bg-indigo-500/20 text-indigo-400 border-indigo-400/30 hover:bg-indigo-500/30"
                   }`}
-                  title={isDarkMode ? "Light Mode (লাইট মোড)" : "Dark Mode (ডার্ক মোড)"}
+                  title={isDarkMode ? "Light Mode" : "Dark Mode"}
                 >
                   {isDarkMode ? <Sun size={19} /> : <Moon size={19} />}
                 </button>
@@ -106,7 +106,7 @@ export default function MobileSidePanel({
                     onLockScreen?.();
                   }}
                   className="w-11 h-11 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-400/30 flex items-center justify-center shadow-md active:scale-90 transition-transform cursor-pointer"
-                  title="Lock Workspace (ফোন লক করুন)"
+                  title="Lock Workspace"
                 >
                   <Lock size={19} />
                 </button>

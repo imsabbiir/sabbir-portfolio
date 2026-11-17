@@ -481,12 +481,12 @@ ${profile.hobbies
             </div>
           </div>
 
-          {/* SECTION 4: HOBBIES & PERSONAL INTERESTS (কমপ্যাক্ট সেকশন) */}
+          {/* SECTION 4: HOBBIES & PERSONAL INTERESTS */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 pb-1.5 border-b border-black/10 dark:border-white/10">
               <Heart size={16} className="text-rose-500" />
               <h2 className="font-bold text-sm text-slate-900 dark:text-white">
-                Hobbies & Personal Interests (আমার শখ)
+                Hobbies & Personal Interests
               </h2>
               <span className="ml-auto text-[11px] font-mono text-slate-400">
                 ## hobbies

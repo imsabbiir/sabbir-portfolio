@@ -131,10 +131,35 @@ export default function Page() {
       setContextMenu({ visible: false, x: 0, y: 0 });
       return;
     }
+
+    const MENU_WIDTH = 216; // w-52 (208px) + safety buffer
+    const MENU_HEIGHT = 195; // 5 items + separator + padding
+    const PADDING = 10;
+
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+    const screenHeight = typeof window !== "undefined" ? window.innerHeight : 800;
+
+    let posX = e.clientX;
+    let posY = e.clientY;
+
+    // Flip upwards if clicking near the bottom of viewport
+    if (posY + MENU_HEIGHT > screenHeight - PADDING) {
+      posY = posY - MENU_HEIGHT;
+    }
+
+    // Flip leftwards if clicking near the right boundary
+    if (posX + MENU_WIDTH > screenWidth - PADDING) {
+      posX = posX - MENU_WIDTH;
+    }
+
+    // Keep menu safely within screen bounds
+    posX = Math.max(PADDING, Math.min(posX, screenWidth - MENU_WIDTH - PADDING));
+    posY = Math.max(PADDING, Math.min(posY, screenHeight - MENU_HEIGHT - PADDING));
+
     setContextMenu({
       visible: true,
-      x: e.clientX,
-      y: e.clientY,
+      x: posX,
+      y: posY,
     });
   };
 
@@ -483,7 +508,7 @@ export default function Page() {
                 />
               </div>
 
-              {/* 1 Row Empty Gap between App Icons and Bottom Dock (বটম আর অ্যাপ আইকনের মাঝে এক রো ফাঁকা) */}
+              {/* 1 Row Empty Gap between App Icons and Bottom Dock */}
               <div className="h-[72px] shrink-0 w-full" aria-hidden="true" />
 
               {/* C. Persistent Mobile Phone Bottom Dock (Always 100% visible, never cut off!) */}
@@ -808,120 +833,77 @@ export default function Page() {
           {contextMenu.visible && (
             <div
               style={{ top: `${contextMenu.y}px`, left: `${contextMenu.x}px` }}
-              className="hidden md:block fixed z-50 w-52 bg-white/90 dark:bg-slate-900/95 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-xl shadow-2xl py-1 text-xs font-sans text-slate-800 dark:text-slate-100 pointer-events-auto"
+              className="hidden md:block fixed z-50 w-52 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-xl shadow-2xl py-1 text-xs font-sans text-slate-800 dark:text-slate-100 pointer-events-auto select-none"
             >
+              {/* 1. Open Settings */}
               <button
+                type="button"
                 onClick={() => {
                   openApp("settings");
                   setContextMenu({ visible: false, x: 0, y: 0 });
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
+                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2.5 transition cursor-pointer"
               >
-                <Settings className="text-xs text-blue-400" size={14} />
+                <Settings className="text-blue-500" size={14} />
                 <span>Open Settings</span>
               </button>
 
+              {/* 2. Open Terminal */}
               <button
+                type="button"
                 onClick={() => {
                   openApp("terminal");
                   setContextMenu({ visible: false, x: 0, y: 0 });
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
+                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2.5 transition cursor-pointer"
               >
-                <FaTerminal className="text-xs text-emerald-500" />
+                <FaTerminal className="text-emerald-500" />
                 <span>Open Terminal</span>
               </button>
 
+              {/* 3. Light Mode / Dark Mode */}
               <button
-                onClick={() => {
-                  openApp("gallery");
-                  setContextMenu({ visible: false, x: 0, y: 0 });
-                }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
-              >
-                <Images className="text-xs text-purple-400" size={14} />
-                <span>Open Gallery (Photos)</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  openApp("chess");
-                  setContextMenu({ visible: false, x: 0, y: 0 });
-                }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
-              >
-                <Crown className="text-xs text-amber-400" size={14} />
-                <span>Play Chess ♟️</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  openApp("instrument");
-                  setContextMenu({ visible: false, x: 0, y: 0 });
-                }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
-              >
-                <Piano className="text-xs text-sky-400" size={14} />
-                <span>Play Synthesizer 🎹</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  openApp("projects");
-                  setContextMenu({ visible: false, x: 0, y: 0 });
-                }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
-              >
-                <FaFolderOpen className="text-xs text-sky-500" />
-                <span>Open Projects</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  toggleWallpaper();
-                  setContextMenu({ visible: false, x: 0, y: 0 });
-                }}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
-              >
-                <FaImage className="text-xs text-purple-500" />
-                <span>Next Wallpaper</span>
-              </button>
-
-              {/* Manual Dark/Light Mode in Context Menu */}
-              <button
+                type="button"
                 onClick={() => {
                   toggleDarkMode();
                   setContextMenu({ visible: false, x: 0, y: 0 });
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-indigo-600 hover:text-white flex items-center gap-2 transition"
+                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2.5 transition cursor-pointer"
               >
                 {isDarkMode ? (
-                  <Sun className="text-xs text-amber-400" size={14} />
+                  <Sun className="text-amber-400" size={14} />
                 ) : (
-                  <Moon className="text-xs text-indigo-400" size={14} />
+                  <Moon className="text-indigo-400" size={14} />
                 )}
-                <span>{isDarkMode ? "Light Mode (লাইট মোড)" : "Dark Mode (ডার্ক মোড)"}</span>
+                <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
               </button>
 
               <div className="h-px bg-black/10 dark:bg-white/10 my-1" />
 
+              {/* 4. Reset Widget Position */}
               <button
-                onClick={handleResetPositions}
-                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition"
+                type="button"
+                onClick={() => {
+                  handleResetPositions();
+                  setContextMenu({ visible: false, x: 0, y: 0 });
+                }}
+                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2.5 transition cursor-pointer"
               >
-                <FaRotateLeft className="text-xs text-amber-500" />
-                <span>Reset Widget Positions</span>
+                <FaRotateLeft className="text-amber-500" />
+                <span>Reset Widget Position</span>
               </button>
 
+              {/* 5. Lock Workspace */}
               <button
+                type="button"
                 onClick={() => {
                   handleLockScreen();
                   setContextMenu({ visible: false, x: 0, y: 0 });
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-amber-600 hover:text-white flex items-center gap-2 transition"
+                className="w-full px-3 py-2 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2.5 transition cursor-pointer"
               >
-                <Lock className="text-xs text-amber-400" size={14} />
-                <span>Lock Workspace 🔒</span>
+                <Lock className="text-amber-400" size={14} />
+                <span>Lock Workspace</span>
               </button>
             </div>
           )}
